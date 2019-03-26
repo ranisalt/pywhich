@@ -29,6 +29,11 @@ def test_nonexecutable(fs, tmp_file):
     assert not found  # nosec
 
 
+def test_ignore_directory(fs, tmp_path):
+    found = [*find_command_in_path(tmp_path, [tmp_path])]
+    assert not found  # nosec
+
+
 def test_executable_others(fs, tmp_file):
     file = tmp_file(S_IXOTH)
 
